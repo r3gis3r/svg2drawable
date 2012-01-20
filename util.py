@@ -59,7 +59,7 @@ DENSITIES = [
 ]
 
 def svg_to_drawables(in_path, out_path, out_name=None, 
-                     mdpi_width=48, mdpi_height=48,
+                     mdpi_width=48, mdpi_height=48, folder_format = "drawable-%",
 		     **kargs):
 	"""
 	Render svg into drawable folders (drawable-ldpi, hdpi, mdpi...)
@@ -85,7 +85,7 @@ def svg_to_drawables(in_path, out_path, out_name=None,
 		if kargs.has_key(export_key):
 			process_density = kargs[export_key]
 		if process_density:
-			out_folder_path = path.join(out_path, "drawable-%s" % dname)
+			out_folder_path = path.join(out_path, folder_format % dname)
 			if not path.exists(out_folder_path):
 				mkdir(out_folder_path)
 			out_file_path = path.join(out_folder_path, out_name)
